@@ -32,6 +32,9 @@ app.post('/equations', (req, res)=>{
 });
 
 
+////    CONSOLE.LOG CURRENTLY NOT SHOWING UP IN CONSOLE. DON'T KNOW WHY.
+
+
 
 
 
