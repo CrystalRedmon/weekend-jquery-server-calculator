@@ -13,27 +13,43 @@ console.log('here in the server');
 
 
 
-let currentCalculation =[]
+let currentCalculation = [];
 let allCalculations= [];
 
 
 
 
 
-
+////// RECEIVE DATA FROM CLIENT
 app.post('/calculate', (req, res)=>{
 
     currentCalculation = req.body;
-    allCalculations.push(currentCalculation);
+
+    allCalculations.push([`${currentCalculation.firstNum} ${currentCalculation.operation} ${currentCalculation.secNum}`]);
+
+    if(currentCalculation.operation === '+'){
+        let result = Number(currentCalculation.firstNum) + Number(currentCalculation.secNum);
+        currentCalculation.push(result);
+    }else if(currentCalculation.operation === '-'){
+        let result = Number(currentCalculation.firstNum) - Number(currentCalculation.secNum);
+        currentCalculation = result
+    }else if(currentCalculation.operation === '*'){
+        let result = Number(currentCalculation.firstNum) * Number(currentCalculation.secNum);
+        currentCalculation =result;
+    }else if(currentCalculation.operation === '/'){
+        let result = Number(currentCalculation.firstNum) / Number(currentCalculation.secNum);
+        currentCalculation =result;
+    }
 
     console.log(currentCalculation);
-    console.log(allCalculations)
+
+    // console.log(currentCalculation);
+    // console.log(currentCalculation.firstNum, currentCalculation.operation, currentCalculation.secNum);
 
     ///⬇️ IF NOT INCLUDED THE PAGE WILL NEED TO BE REFRESHED TO SEE NEW INFO
     res.sendStatus(201);
  
 
-console.log(serverCalculationResult());
 
 });
 
@@ -42,30 +58,51 @@ console.log(serverCalculationResult());
 
 
 
+///// RESPOND WITH ALL CALCULATIONS
+app.get('/allcalculations', (req, res)=>{
+
+    console.log('in allcals');
+    res.send(allCalculations);
+
+
+})
+
+
+/// RESPOND WITH CURRENT RESULT
+app.get('/calculatecurrent', (req, res)=>{
+
+    console.log(currentCalculation);
+    res.send(currentCalculation);
+    
+
+});
+
 
 
 //////////  UPDATE STATE   ////////
 
 
 ///////// GET will call this funtion to retrieve the current result
-function serverCalculationResult(){
 
-    if(currentCalculation.operation === '+'){
-        let result = Number(currentCalculation.firstNum) + Number(currentCalculation.secNum);
-        return result;
-    }else if(currentCalculation.operation === '-'){
-        let result = Number(currentCalculation.firstNum) - Number(currentCalculation.secNum);
-        return result; 
-    }else if(currentCalculation.operation === '*'){
-        let result = Number(currentCalculation.firstNum) * Number(currentCalculation.secNum);
-        return result;
-    }else if(currentCalculation.operation === '/'){
-        let result = Number(currentCalculation.firstNum) / Number(currentCalculation.secNum);
-        return result;
-    }
+/////MOVED TO POST
+// function serverCalculationResult(){
+
+//     if(currentCalculation.operation === '+'){
+//         let result = Number(currentCalculation.firstNum) + Number(currentCalculation.secNum);
+//         return result;
+//     }else if(currentCalculation.operation === '-'){
+//         let result = Number(currentCalculation.firstNum) - Number(currentCalculation.secNum);
+//         return result; 
+//     }else if(currentCalculation.operation === '*'){
+//         let result = Number(currentCalculation.firstNum) * Number(currentCalculation.secNum);
+//         return result;
+//     }else if(currentCalculation.operation === '/'){
+//         let result = Number(currentCalculation.firstNum) / Number(currentCalculation.secNum);
+//         return result;
+//     }
 
 
-};
+// };
 
 
 
