@@ -13,16 +13,14 @@ let clientCurrentEquation = []
 function onReady(){
 
     ///  listener for each operation
-    $('#inputForm').on('submit', onAddNum)
+    $('#inputForm').on('submit', onCalculate)
 
     // $('#equalBtn').on('submit', onPostEquation);
-
-        console.log(clientCurrentEquation);
 
 };
 
 
-function onAddNum(evt){
+function onCalculate(evt){
     evt.preventDefault();
     
 
@@ -34,25 +32,37 @@ function onAddNum(evt){
     };
     console.log(addNumbers)
     
-};
 
+    
+    $.ajax({
+        url: '/calculate',
+        method: 'POST',
+        data: addNumbers
+    })
+    .then(response=>{
+        console.log('in add ajax POST');
 
-
-    // console.log(clientCurrentEquation);
-    // $.ajax({
-    //     url: '/add',
-    //     method: 'POST',
-    //     data: addNumbers
-    // })
-    // .then(response=>{
-    //     console.log('in add ajax POST');
-
-        ///THIS CALLS FUNCTION THAT WILL 'GET' EQUATION HISTORY
+        // /THIS CALLS FUNCTION THAT WILL 'GET' EQUATION HISTORY
         // getStoredEquations();
 
-        ///THIS CALLS THE FUNCTION THAT WILL GET CURRENT RESULT
+        // /THIS CALLS THE FUNCTION THAT WILL GET CURRENT RESULT
         // getCurrentResult();
-    // })
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+};
+
+ 
 
 
 

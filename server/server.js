@@ -14,27 +14,73 @@ console.log('here in the server');
 
 
 let currentCalculation =[]
-// let allCalculations= [];
+let allCalculations= [];
 
 
 
 
 
 
-app.post('/add', (req, res)=>{
+app.post('/calculate', (req, res)=>{
 
     currentCalculation = req.body;
+    allCalculations.push(currentCalculation);
 
-    //  console.log(req.body);
-    //  allCalculations.push(currentCalculation);
+    // console.log(currentCalculation);
+    // console.log(allCalculations)
 
     ///⬇️ IF NOT INCLUDED THE PAGE WILL NEED TO BE REFRESHED TO SEE NEW INFO
     res.sendStatus(201);
+ 
     
+console.log(currentCalculation);
+
+// console.log(concat(Number(currentCalculation.firstNum), currentCalculation.operation, Number(currentCalculation.secNum)));
+
+
+
+
+// let firstNum = Number(currentCalculation.firstNum);
+// let secNum = Number(currentCalculation.secNum);
+// let operation = currentCalculation.operation
+
+
+
+// let tryCal =  lksdfjla.concat('+', secNum);
+// console.log(tryCal);
+
+// let tryCal = firstNum operation secNum ;
+
+console.log(serverCalculationResult());
+
 });
 
 
-////    CONSOLE.LOG CURRENTLY NOT SHOWING UP IN CONSOLE. DON'T KNOW WHY.
+
+
+
+
+//////////  UPDATE STATE   ////////
+
+function serverCalculationResult(){
+
+    if(currentCalculation.operation === '+'){
+        let result = Number(currentCalculation.firstNum) + Number(currentCalculation.secNum);
+        return result;
+    }
+
+
+};
+
+
+
+
+
+
+
+
+
+
 
 
 
