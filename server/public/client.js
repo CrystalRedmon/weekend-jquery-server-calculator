@@ -45,7 +45,7 @@ function onCalculate(evt){
 
 
         getStoredEquations();
-        getCurrentResult();
+        
     });
 
 
@@ -61,7 +61,7 @@ function getStoredEquations(){
             clientAllCalulations = response;
             console.log(clientAllCalulations);
             // render(); SHOULD EACH GET HAVE A RENDER????
-
+            getCurrentResult();
         });
     };
 };

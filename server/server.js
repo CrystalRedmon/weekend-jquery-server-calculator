@@ -13,7 +13,7 @@ console.log('here in the server');
 
 
 
-let currentCalculation = [];
+let serverCurrentCalculation = [];
 let allCalculations= [];
 
 
@@ -29,16 +29,23 @@ app.post('/calculate', (req, res)=>{
 
     if(currentCalculation.operation === '+'){
         let result = Number(currentCalculation.firstNum) + Number(currentCalculation.secNum);
-        currentCalculation.push(result);
+        serverCurrentCalculation.push(result);
+        
+
     }else if(currentCalculation.operation === '-'){
         let result = Number(currentCalculation.firstNum) - Number(currentCalculation.secNum);
-        currentCalculation = result
+        serverCurrentCalculation.push(result);
+
     }else if(currentCalculation.operation === '*'){
         let result = Number(currentCalculation.firstNum) * Number(currentCalculation.secNum);
-        currentCalculation =result;
+        serverCurrentCalculation.push(result);
+        
     }else if(currentCalculation.operation === '/'){
         let result = Number(currentCalculation.firstNum) / Number(currentCalculation.secNum);
+        serverCurrentCalculation.push(result);
+
         currentCalculation =result;
+        
     }
 
     console.log(currentCalculation);
@@ -48,8 +55,6 @@ app.post('/calculate', (req, res)=>{
 
     ///⬇️ IF NOT INCLUDED THE PAGE WILL NEED TO BE REFRESHED TO SEE NEW INFO
     res.sendStatus(201);
- 
-
 
 });
 
@@ -71,8 +76,8 @@ app.get('/allcalculations', (req, res)=>{
 /// RESPOND WITH CURRENT RESULT
 app.get('/calculatecurrent', (req, res)=>{
 
-    console.log(currentCalculation);
-    res.send(currentCalculation);
+    console.log(serverCurrentCalculation);
+    res.send(serverCurrentCalculation);
     
 
 });
