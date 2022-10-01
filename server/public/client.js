@@ -3,9 +3,6 @@ console.log('in client.js');
 $(document).ready(onReady);
 
 ////   STATE/GLOBAL VARIABLES
-
-
-///UNSURE IF THIS NEEDS TO BE GLOBAL
 let clientAllCalulations;
 let clientCurrentResult = 0;
 
@@ -13,10 +10,10 @@ let clientCurrentResult = 0;
 ////   EVENTS
 function onReady(){
 
-    ///  listener for each operation
-    $('#inputForm').on('submit', onCalculate)
+    ///  listener for submit and clear
+    $('#inputForm').on('submit', onCalculate);
 
-    // $('#equalBtn').on('submit', onPostEquation);
+    $('#clearbtn').on('click', onClear);
 
 };
 
@@ -50,6 +47,8 @@ function onCalculate(evt){
 
 
 
+
+///////////     UPDATE STATE   ---   AJAX GET/POST
 function getStoredEquations(){
 
         $.ajax({
@@ -60,47 +59,42 @@ function getStoredEquations(){
 
             clientAllCalulations = response;
             console.log(clientAllCalulations);
-            // render(); SHOULD EACH GET HAVE A RENDER????
-            getCurrentResult();
+            render();
         });
-    };
+
+
+
+        $.ajax({
+                url: '/calculatecurrent',
+                method: 'GET'
+            })
+            .then(response=>{
+
+                clientCurrentResult = response;
+                console.log(clientCurrentResult);
+                render();
+
+            });
+
+    };      
 };
 
-function getCurrentResult(){
 
-    $.ajax({
-        url: '/calculatecurrent',
-        method: 'GET'
-    })
-    .then(response=>{
-
-        clientCurrentResult = response;
-        console.log(clientCurrentResult);
-
-
-    });
-
-}
 
  
-
-
-
-
-
-
-
-//     UPDATE STATE   ---   AJAX GET/POST
-
 
 // RENDER FOR CALCULATION HISTORY
 function render(){
     $('#calHistory').empty();
+    $('#currentResult').empty();
 
     for(let cal of clientAllCalulations){
-         $('#calHistory').append(`<p>${cal}</p>`);
+         $('#calHistory').append(`<li>${cal}</li>`);
     }
    
+    $('#currentResult').append(`<p>${clientCurrentResult}</p>`);
+
+
     
 }
 

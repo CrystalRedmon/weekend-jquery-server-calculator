@@ -27,6 +27,9 @@ app.post('/calculate', (req, res)=>{
 
     allCalculations.push([`${currentCalculation.firstNum} ${currentCalculation.operation} ${currentCalculation.secNum}`]);
 
+    serverCurrentCalculation = []
+
+
     if(currentCalculation.operation === '+'){
         let result = Number(currentCalculation.firstNum) + Number(currentCalculation.secNum);
         serverCurrentCalculation.push(result);
