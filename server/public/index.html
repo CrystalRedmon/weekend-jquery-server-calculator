@@ -13,25 +13,24 @@
     <h1>Server Side Calculator</h1>
 
     <form id="inputForm">
-        <input id="firstNum" type="text" ><br>
+        <input id="firstNum" type="text" required ><br>
 
-        <div id="radionBtns">
-            <input type="radio" id="add" name="operation" value="+">
+        <div id="radionBtns" required>
+            <input type="radio" id="add" name="operation" value="+" required>
             <label for="add">+</label><br>
 
-
-            <input type="radio" id="sub" name="operation" value="-">
+            <input type="radio" id="sub" name="operation" value="-" required>
             <label for="sub">-</label><br>
 
-            <input type="radio" id="multiply" name="operation" value="*">
+            <input type="radio" id="multiply" name="operation" value="*" required>
             <label for="multiply">*</label><br>
 
-            <input type="radio" id="divide" name="operation" value="/">
+            <input type="radio" id="divide" name="operation" value="/" required>
             <label for="divide">/</label><br>
         </div>
 
 
-        <input id="secNum" type="text" >
+        <input id="secNum" type="text" required >
                 
                 
         <!-- EQUALS -->

@@ -18,18 +18,6 @@ function onReady(){
 };
 
 
-function onClear(evt){
-    evt.preventDefault();
-
-    form.reset();
- 
- };
- 
-
-
-
-
-
 
 
 function onCalculate(evt){
@@ -102,6 +90,9 @@ function render(){
     $('#calHistory').empty();
     $('#currentResult').empty();
 
+    let revClientAllCalculations = clientAllCalulations.reverse();
+    console.log(revClientAllCalculations)
+
     for(let cal of clientAllCalulations){
          $('#calHistory').append(`<li>${cal}</li>`);
     }
@@ -115,7 +106,12 @@ function render(){
 
 /// CLEAR FORM
 
+function onClear(evt){
+    evt.preventDefault();
 
+    form.reset();
+ 
+ };
 
 
 

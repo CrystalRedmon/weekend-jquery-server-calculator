@@ -87,64 +87,6 @@ app.get('/calculatecurrent', (req, res)=>{
 
 
 
-//////////  UPDATE STATE   ////////
-
-
-///////// GET will call this funtion to retrieve the current result
-
-/////MOVED TO POST
-// function serverCalculationResult(){
-
-//     if(currentCalculation.operation === '+'){
-//         let result = Number(currentCalculation.firstNum) + Number(currentCalculation.secNum);
-//         return result;
-//     }else if(currentCalculation.operation === '-'){
-//         let result = Number(currentCalculation.firstNum) - Number(currentCalculation.secNum);
-//         return result; 
-//     }else if(currentCalculation.operation === '*'){
-//         let result = Number(currentCalculation.firstNum) * Number(currentCalculation.secNum);
-//         return result;
-//     }else if(currentCalculation.operation === '/'){
-//         let result = Number(currentCalculation.firstNum) / Number(currentCalculation.secNum);
-//         return result;
-//     }
-
-
-// };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 app.listen(PORT, () =>{
