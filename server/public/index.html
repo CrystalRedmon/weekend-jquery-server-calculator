@@ -4,23 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery.js" ></script>
+    <script src="client.js" ></script>
+    <link rel="stylesheet" href="styles.css">
     <title>jQuery Server Calculator</title>
 </head>
 <body>
     <h1>Server Side Calculator</h1>
 
     <form id="inputForm">
-        <input id="firstNum" type="text" >
-        <input id="add" type="button" >
-        <input id="sub" type="button" >
-        <input id="multiply" type="button" >
-        <input id="divide" type="button" >
-        <input id="secNum" type="text" >
-        <!-- EQUALS -->
-        <button id="equalBtn">=</button>
-        <!-- CLEAR -->
-        <button id="clearBtn">C</button>
+        <input id="firstNum" type="text" ><br>
 
+        <div id="radionBtns">
+            <input type="radio" id="add" name="operation" value="+">
+            <label for="add">+</label><br>
+
+
+            <input type="radio" id="sub" name="operation" value="-">
+            <label for="sub">-</label><br>
+
+            <input type="radio" id="multiply" name="operation" value="*">
+            <label for="multiply">*</label><br>
+
+            <input type="radio" id="divide" name="operation" value="/">
+            <label for="divide">-</label><br>
+        </div>
+
+
+        <input id="secNum" type="text" >
+                
+                <!-- <input id="add" type="button" >
+                <input id="sub" type="button" >
+                <input id="multiply" type="button" >
+                <input id="divide" type="button" > -->
+                
+        <!-- EQUALS -->
+                <button id="equalBtn">=</button>
+        <!-- CLEAR -->
+                <button id="clearBtn">C</button>
+
+       
 
 
     </form>

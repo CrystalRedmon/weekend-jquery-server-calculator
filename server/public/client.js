@@ -13,40 +13,48 @@ let clientCurrentEquation = []
 function onReady(){
 
     ///  listener for each operation
-    $('#add').on('click', onAddNum)
+    $('#inputForm').on('submit', onAddNum)
 
-    $('#equalBtn').on('submit', onPostEquation);
+    // $('#equalBtn').on('submit', onPostEquation);
 
+        console.log(clientCurrentEquation);
 
 };
 
 
-function onAddNum(){
+function onAddNum(evt){
+    evt.preventDefault();
+    
+
     let addNumbers ={
-        firstNum: $('#firstNum'),
-        addOperation: '+',
-        secNum: $('#secNum')
+        firstNum: $('#firstNum').val(),
+        secNum: $('#secNum').val(),
+        operation: $('input[name=operation]:checked').val()
         
     };
+    console.log(addNumbers)
+    
+};
 
-    clientCurrentEquation = addNumbers
 
-    $.ajax({
-        url: '/add',
-        method: 'POST',
-        data: addNumbers
-    })
-    .then(response=>{
-        console.log('in add ajax POST');
+
+    // console.log(clientCurrentEquation);
+    // $.ajax({
+    //     url: '/add',
+    //     method: 'POST',
+    //     data: addNumbers
+    // })
+    // .then(response=>{
+    //     console.log('in add ajax POST');
 
         ///THIS CALLS FUNCTION THAT WILL 'GET' EQUATION HISTORY
-        getStoredEquations();
+        // getStoredEquations();
 
         ///THIS CALLS THE FUNCTION THAT WILL GET CURRENT RESULT
-        getCurrentResult();
-    })
+        // getCurrentResult();
+    // })
 
-};
+
 
 
 

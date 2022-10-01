@@ -13,18 +13,20 @@ console.log('here in the server');
 
 
 
-let currentCalculation
-let allCalculations= [];
+let currentCalculation =[]
+// let allCalculations= [];
 
 
 
 
-app.post('/equations', (req, res)=>{
 
-    currentCalculation= req.body;
 
-     console.log(req.body);
-     allCalculations.push(currentCalculation);
+app.post('/add', (req, res)=>{
+
+    currentCalculation = req.body;
+
+    //  console.log(req.body);
+    //  allCalculations.push(currentCalculation);
 
     ///⬇️ IF NOT INCLUDED THE PAGE WILL NEED TO BE REFRESHED TO SEE NEW INFO
     res.sendStatus(201);
