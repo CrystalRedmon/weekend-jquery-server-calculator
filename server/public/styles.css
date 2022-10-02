@@ -1,14 +1,30 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+}
 
-#container, h1{
+
+h1{
+    margin: 0em auto 0em auto;
+    text-align: center;
+    font-size: 2.5em;
+    background-color: tan;
+    padding: 1em;
+}
+
+
+#container{
     text-align: center;
     width: 50%;
     margin: auto;
+    background-color: tan;
 }
 
 #inputForm{
     display: grid;
     grid-template-columns: auto auto auto;
     grid-template-rows: auto auto auto;
+    padding: 2em;
 }
 
 #radioBtns{
@@ -52,9 +68,8 @@ input[type=text]{
 
 #currentResult{
     font-size: 2em;
-    border-top: solid black 3px;
+    border-bottom: solid black 1px;
     margin-top: 10px;
-    margin-bottom: 4em;
     height: 2em;
 }
 
@@ -63,5 +78,12 @@ input[type=text]{
 
 
 h2{
-    border-bottom: solid 2px black;
+    margin: 2em auto 1em auto;
 }
+
+li{
+    list-style: none;
+}
+
+
+
