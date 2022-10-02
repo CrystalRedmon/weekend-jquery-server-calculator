@@ -10,34 +10,34 @@
     <title>jQuery Server Calculator</title>
 </head>
 <body>
+    
     <h1>Server Side Calculator</h1>
-
+    <div id="container">
     <form id="inputForm">
-        <input id="firstNum" type="text" required ><br>
-
-        <div id="radionBtns" required>
-            <input type="radio" id="add" name="operation" value="+" required>
-            <label for="add">+</label><br>
-
-            <input type="radio" id="sub" name="operation" value="-" required>
-            <label for="sub">-</label><br>
-
-            <input type="radio" id="multiply" name="operation" value="*" required>
-            <label for="multiply">*</label><br>
-
-            <input type="radio" id="divide" name="operation" value="/" required>
-            <label for="divide">/</label><br>
+        <div id="numInput">
+            <input id="firstNum" type="text" required ><br>
+            <input id="secNum" type="text" required >
         </div>
 
+        <div id="radioBtns" required>
+            <input type="radio" id="add" name="operation" value="+" required><br>
+            <label for="add">+</label><br>
 
-        <input id="secNum" type="text" required >
+            <input type="radio" id="sub" name="operation" value="-" required><br>
+            <label for="sub">-</label><br>
+
+            <input type="radio" id="multiply" name="operation" value="*" required><br>
+            <label for="multiply">*</label><br>
+
+            <input type="radio" id="divide" name="operation" value="/" required><br>
+            <label for="divide">/</label><br>
+         </div>
+ 
+        <div id="buttons" >
+            <button id="equalBtn">=</button>
+            <button type="reset" id="clearBtn">C</button>  
+        </div>
                 
-                
-        <!-- EQUALS -->
-                <button id="equalBtn">=</button>
-        <!-- CLEAR -->
-               
-                <button type="reset" id="clearBtn">C</button>  
 
     </form>
 
@@ -53,6 +53,6 @@
 
 
 
-
+    </div>
 </body>
 </html>
