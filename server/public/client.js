@@ -47,7 +47,7 @@ function onCalculate(evt){
         
     });
 
-
+}
 
 
 ///////////     UPDATE STATE   ---   AJAX GET/POST
@@ -79,7 +79,7 @@ function getStoredEquations(){
             });
 
     };      
-};
+
 
 
 
