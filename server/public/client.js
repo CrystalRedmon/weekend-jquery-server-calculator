@@ -8,7 +8,7 @@ let clientCurrentResult = 0;
 
 
 ////   EVENTS
-function onReady(){
+function onReady() {
 
     ///  listener for submit and clear
     $('#inputForm').on('submit', onCalculate);
@@ -21,42 +21,42 @@ function onReady(){
 
 
 
-function onCalculate(evt){
+function onCalculate(evt) {
     evt.preventDefault();
-    
 
-    let addNumbers ={
+
+    let addNumbers = {
         firstNum: $('#firstNum').val(),
         secNum: $('#secNum').val(),
         operation: $('input[name=operation]:checked').val()
-        
+
     };
     console.log(addNumbers);
-    
 
-    
+
+
     $.ajax({
         url: '/calculate',
         method: 'POST',
         data: addNumbers
     })
-    .then(response=>{
-        console.log('in add ajax POST', response);
-        getStoredEquations();
-        
-    });
+        .then(response => {
+            console.log('in add ajax POST', response);
+            getStoredEquations();
+
+        });
 
 }
 
 
 ///////////     UPDATE STATE   ---   AJAX GET/POST
-function getStoredEquations(){
+function getStoredEquations() {
 
-        $.ajax({
-            url: '/allcalculations',
-            method: 'GET'
-        })
-        .then(response=>{
+    $.ajax({
+        url: '/allcalculations',
+        method: 'GET'
+    })
+        .then(response => {
 
             clientAllCalulations = response;
             console.log(clientAllCalulations);
@@ -65,39 +65,37 @@ function getStoredEquations(){
 
 
 
-        $.ajax({
-                url: '/calculatecurrent',
-                method: 'GET'
-            })
-            .then(response=>{
+    $.ajax({
+        url: '/calculatecurrent',
+        method: 'GET'
+    })
+        .then(response => {
 
-                clientCurrentResult = response;
-                console.log(clientCurrentResult);
-                render();
+            clientCurrentResult = response;
+            console.log(clientCurrentResult);
+            render();
 
-            });
+        });
 
-    };      
-
-
+};
 
 
- 
 
 // RENDER FOR CALCULATION HISTORY
-function render(){
+function render() {
+
     $('#calHistory').empty();
     $('#currentResult').empty();
 
     let revClientAllCalculations = clientAllCalulations.reverse();
     console.log(revClientAllCalculations)
 
-    for(let cal of clientAllCalulations){
-         $('#calHistory').append(`<li>${cal}</li>`);
+    for (let cal of clientAllCalulations) {
+        $('#calHistory').append(`<li>${cal}</li>`);
     }
-   
+
     $('#currentResult').append(`<p>${clientCurrentResult}</p>`);
-    
+
 }
 
 
@@ -105,12 +103,12 @@ function render(){
 
 /// CLEAR FORM
 
-function onClear(evt){
+function onClear(evt) {
     evt.preventDefault();
 
     form.reset();
- 
- };
+
+};
 
 
 

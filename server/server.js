@@ -37,24 +37,24 @@ let allCalculations = [
         secNum: '3',
         operation: '/'
     },
-   
+
 
 ];
 
 
 
-    ////// RECEIVE DATA FROM CLIENT
-    app.post('/calculate', (req, res) => {
+////// RECEIVE DATA FROM CLIENT
+app.post('/calculate', (req, res) => {
 
-        currentCalculation = req.body;
+    currentCalculation = req.body;
 
-        allCalculations.push(currentCalculation);
-        console.log('in the POST now', allCalculations);
-        console.log(completedCalculations);
-        // [`${currentCalculation.firstNum} ${currentCalculation.operation} ${currentCalculation.secNum}`]
-        ///⬇️ IF NOT INCLUDED THE PAGE WILL NEED TO BE REFRESHED TO SEE NEW INFO
-        res.sendStatus(201);
-    });
+    allCalculations.push(currentCalculation);
+    console.log('in the POST now', allCalculations);
+    console.log(completedCalculations);
+    // [`${currentCalculation.firstNum} ${currentCalculation.operation} ${currentCalculation.secNum}`]
+    ///⬇️ IF NOT INCLUDED THE PAGE WILL NEED TO BE REFRESHED TO SEE NEW INFO
+    res.sendStatus(201);
+});
 
 
 
@@ -102,39 +102,40 @@ function getCalculationStrings() {
 
     };
 };
-    
-
-    /// RESPOND WITH CURRENT RESULT
-    app.get('/calculatecurrent', (req, res) => {
-
-        console.log(serverCurrentCalculation);
-        res.send(serverCurrentCalculation);
-
-    });
 
 
+/// RESPOND WITH CURRENT RESULT
+app.get('/calculatecurrent', (req, res) => {
 
-    ///// RESPOND WITH ALL CALCULATIONS
-    app.get('/allcalculations', (req, res) => {
+    console.log(serverCurrentCalculation);
+    res.send(serverCurrentCalculation);
 
-        console.log('in allcals, ', completedCalculations);
-
-        getCalculationStrings();
-
-        res.send(completedCalculations);
-
-
-    })
+});
 
 
 
+///// RESPOND WITH ALL CALCULATIONS
+app.get('/allcalculations', (req, res) => {
+
+    console.log('in allcals, ', completedCalculations);
+
+    getCalculationStrings();
+
+    res.send(completedCalculations);
+
+    completedCalculations = [];
+
+});
 
 
 
 
-    app.listen(PORT, () => {
-        console.log('Server is running on port', PORT);
-    });
+
+
+
+app.listen(PORT, () => {
+    console.log('Server is running on port', PORT);
+});
 
 
 
