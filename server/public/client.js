@@ -43,10 +43,11 @@ function onCalculate(evt) {
         .then(response => {
             console.log('in add ajax POST', response);
             getStoredEquations();
+            getCurrentCalculation();
 
         });
 
-}
+};
 
 
 ///////////     UPDATE STATE   ---   AJAX GET/POST
@@ -61,10 +62,14 @@ function getStoredEquations() {
             clientAllCalulations = response;
             console.log(clientAllCalulations);
             render();
+
         });
 
 
 
+}
+
+function getCurrentCalculation() {
     $.ajax({
         url: '/calculatecurrent',
         method: 'GET'
@@ -93,10 +98,11 @@ function render() {
     for (let cal of clientAllCalulations) {
         $('#calHistory').append(`<li>${cal}</li>`);
     }
-
+    console.log(clientCurrentResult);
     $('#currentResult').append(`<p>${clientCurrentResult}</p>`);
 
-}
+};
+
 
 
 
@@ -105,8 +111,8 @@ function render() {
 
 function onClear(evt) {
     evt.preventDefault();
-
     form.reset();
+
 
 };
 
