@@ -15,6 +15,7 @@ function onReady(){
 
     $('#inputForm').on('submit', '#clearbtn', onClear);
 
+    getStoredEquations();
 };
 
 
