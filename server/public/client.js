@@ -111,7 +111,10 @@ function render() {
 
 function onClear(evt) {
     evt.preventDefault();
+
+    $('#currentResult').append('');
     form.reset();
+    
 
 
 };
