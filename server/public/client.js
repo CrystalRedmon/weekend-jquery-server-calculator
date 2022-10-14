@@ -41,9 +41,7 @@ function onCalculate(evt){
         data: addNumbers
     })
     .then(response=>{
-        console.log('in add ajax POST');
-
-
+        console.log('in add ajax POST', response);
         getStoredEquations();
         
     });
@@ -99,10 +97,10 @@ function render(){
     }
    
     $('#currentResult').append(`<p>${clientCurrentResult}</p>`);
-
-
     
 }
+
+
 
 
 /// CLEAR FORM

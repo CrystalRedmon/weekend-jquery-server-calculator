@@ -42,6 +42,27 @@ let allCalculations = [
 ];
 
 
+
+    ////// RECEIVE DATA FROM CLIENT
+    app.post('/calculate', (req, res) => {
+
+        currentCalculation = req.body;
+
+        allCalculations.push(currentCalculation);
+        console.log('in the POST now', allCalculations);
+        console.log(completedCalculations);
+        // [`${currentCalculation.firstNum} ${currentCalculation.operation} ${currentCalculation.secNum}`]
+        ///⬇️ IF NOT INCLUDED THE PAGE WILL NEED TO BE REFRESHED TO SEE NEW INFO
+        res.sendStatus(201);
+    });
+
+
+
+
+
+
+
+
 //// function that will iterate over the allCalculations array of object and calculate the outcome for each object 
 //// function should push a string into completedCalculation array. 
 
@@ -50,6 +71,8 @@ function getCalculationStrings() {
 
     for (let objectEquation of allCalculations) {
 
+        serverCurrentCalculation = [];
+
         console.log(objectEquation);
 
         if (objectEquation.operation === '+') {
@@ -57,6 +80,8 @@ function getCalculationStrings() {
             let result = Number(objectEquation.firstNum) + Number(objectEquation.secNum);
             let equationString = (`${Number(objectEquation.firstNum)} ${objectEquation.operation} ${Number(objectEquation.secNum)} = ${result}`);
             completedCalculations.push(equationString);
+            serverCurrentCalculation.push(result);
+
         } else if (objectEquation.operation === '-') {
 
             let result = Number(objectEquation.firstNum) - Number(objectEquation.secNum);
@@ -77,21 +102,7 @@ function getCalculationStrings() {
 
     };
 };
-    getCalculationStrings();
-
-
-
-
-
-    ///// RESPOND WITH ALL CALCULATIONS
-    app.get('/allcalculations', (req, res) => {
-
-        console.log('in allcals');
-        res.send(completedCalculations);
-
-
-    })
-
+    
 
     /// RESPOND WITH CURRENT RESULT
     app.get('/calculatecurrent', (req, res) => {
@@ -99,40 +110,24 @@ function getCalculationStrings() {
         console.log(serverCurrentCalculation);
         res.send(serverCurrentCalculation);
 
-
     });
 
 
 
+    ///// RESPOND WITH ALL CALCULATIONS
+    app.get('/allcalculations', (req, res) => {
+
+        console.log('in allcals, ', completedCalculations);
+
+        getCalculationStrings();
+
+        res.send(completedCalculations);
+
+
+    })
 
 
 
-
-
-
-
-
-
-
-
-
-    ///////////////////////////////////////CURERNTLY THE CALCULATIONS APPEAR AS [OBJECT OBJECT]. MUST CREATE A FUNCTION THAT WILL ITERATE OVER ARRAY AND USE OBJECT VALUES TO GET CALCULATAIONS
-
-
-
-
-
-    ////// RECEIVE DATA FROM CLIENT
-    app.post('/calculate', (req, res) => {
-
-        currentCalculation = req.body;
-
-        allCalculations.push(currentCalculation);
-        console.log(allCalculations);
-        // [`${currentCalculation.firstNum} ${currentCalculation.operation} ${currentCalculation.secNum}`]
-        ///⬇️ IF NOT INCLUDED THE PAGE WILL NEED TO BE REFRESHED TO SEE NEW INFO
-        res.sendStatus(201);
-    });
 
 
 
@@ -140,6 +135,14 @@ function getCalculationStrings() {
     app.listen(PORT, () => {
         console.log('Server is running on port', PORT);
     });
+
+
+
+
+
+
+
+
 
 
 
